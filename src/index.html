@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="styles.css" rel="stylesheet">
+  <link href="/dist/output.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/src/favicon.ico">
+  <title>Calculadora</title>
+</head>
+
+<body class="bg-indigo-100 flex flex-col justify-center items-center h-screen">
+  <!-- Reloj y Fecha -->
+  <div id="clock" class="bg-slate-700 m-3 text-3xl text-white p-3 rounded-lg"></div>
+
+  <div class="bg-blue-300 max-w-lg p-4 rounded-2xl">
+    <div class="bg-white shadow-md rounded-lg p-4">
+
+      <div class="flex flex-row gap-5">
+        <input type="text" id="inputKeyword" class="inputKeyword text-3xl w-full mb-4 p-2 border border-gray-300 rounded" placeholder="0">
+        <button id="copyButton"class="custom-button text-white py-2 rounded"><img class="w-20 h-20" src="/src/copy_clipboard.svg"></button>
+      </div>
+
+      <div class="grid grid-cols-4 gap-2 text-3xl font-bold">
+        <button class="custom-button bg-red-500 hover:bg-red-400 text-white rounded" onclick="clearInput()">C</button>
+
+        <button class="custom-button py-2 bg-cyan-600 hover:bg-blue-600 text-white rounded"
+          onclick="appendNumber(7)">7</button>
+        <button class="custom-button bg-cyan-600 hover:bg-blue-600 text-white py-2 rounded"
+          onclick="appendNumber(8)">8</button>
+        <button class="custom-button bg-cyan-600 hover:bg-blue-600 text-white py-2 rounded"
+          onclick="appendNumber(9)">9</button>
+          
+        <button class="custom-button bg-zinc-500 hover:bg-zinc-700 text-white py-2 rounded"
+          onclick="appendOperator('/')">/</button>
+        <button class="custom-button bg-cyan-600 hover:bg-blue-600 text-white py-2 rounded"
+          onclick="appendNumber(4)">4</button>
+        <button class="custom-button bg-cyan-600 hover:bg-blue-600 text-white py-2 rounded"
+          onclick="appendNumber(5)">5</button>
+        <button class="custom-button bg-cyan-600 hover:bg-blue-600 text-white py-2 rounded"
+          onclick="appendNumber(6)">6</button>
+
+        <button class="custom-button bg-zinc-500 hover:bg-zinc-700 text-white py-2 rounded"
+          onclick="appendOperator('*')">*</button>
+        <button class="custom-button bg-cyan-600 hover:bg-blue-600 text-white py-2 rounded"
+          onclick="appendNumber(1)">1</button>
+        <button class="custom-button bg-cyan-600 hover:bg-blue-600 text-white py-2 rounded"
+          onclick="appendNumber(2)">2</button>
+        <button class="custom-button bg-cyan-600 hover:bg-blue-600 text-white py-2 rounded"
+          onclick="appendNumber(3)">3</button>
+
+        <button class="custom-button bg-zinc-500 hover:bg-zinc-700 text-white py-2 rounded"
+          onclick="appendOperator('-')">-</button>
+        <button class="custom-button bg-zinc-500 hover:bg-zinc-700 text-white py-2 rounded"
+          onclick="appendOperator('+')">+</button>
+          <button class="custom-button bg-cyan-600 hover:bg-blue-600 text-white py-2 rounded"
+        onclick="appendNumber(0)">0</button>
+        <button class="custom-button bg-cyan-600 hover:bg-blue-600 text-white py-2 rounded"
+          onclick="appendDecimal()">.</button>
+
+        <button class="col-span-4 bg-green-500 hover:bg-green-400 text-white py-4 rounded"
+          onclick="calculate()">=</button>
+
+      </div>
+    </div>
+  </div>
+  <script src="/src/config.js"></script>
+  <script>
+    function updateClock() {
+      var now = new Date();
+      var date = now.toLocaleDateString();
+      var time = now.toLocaleTimeString();
+      var clockElement = document.getElementById('clock');
+      clockElement.innerHTML = date + ' ' + time;
+    }
+    // Llama a la función para actualizar el reloj cada segundo
+    setInterval(updateClock, 1000);
+    // Ejecuta la función una vez al inicio para mostrar la hora actual
+    window.onload = updateClock;
+  </script>
+</body>
+</html>
